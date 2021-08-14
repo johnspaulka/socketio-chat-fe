@@ -20,10 +20,24 @@
     <form id="form" action="">
       <input id="input" autocomplete="off" /><button>Send</button>
     </form>
-    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdn.socket.io/4.1.2/socket.io.min.js" integrity="sha384-toS6mmwu70G0fw54EGlWWeA4z3dyJ+dlXBtSURSKN4vyRFOcxd3Bzjj/AoOwY+Rg" crossorigin="anonymous"></script>
 
     <script>
-      var socket = io();
+      var socket = io("http://localhost:5000", {
+        path: "/pk-websocket",
+        transports: ["websocket"],
+      });
+
+
+// const ws = new WebSocket('ws://www.host.com/path');
+
+// ws.on('open', function open() {
+//   ws.send('something');
+// });
+
+// ws.on('message', function incoming(message) {
+//   console.log('received: %s', message);
+// });
 
       var messages = document.getElementById('messages');
       var form = document.getElementById('form');
